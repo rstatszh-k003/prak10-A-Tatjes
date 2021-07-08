@@ -279,34 +279,156 @@ library(gt)        # Package wird für Funktion gt() geladen</code></pre>
 <pre class="r"><code>einkaeufe &lt;- read_csv(file = &quot;/cloud/project/data/supermarkt/einkaeufe.csv&quot;)
 preise &lt;- read_csv(file = &quot;/cloud/project/data/supermarkt/preise.csv&quot;)
 kundenprofile &lt;- read_csv(file = &quot;/cloud/project/data/supermarkt/kundenprofile.csv&quot;)</code></pre>
-<!-- 2. Strick das Dokument und dann: git add, commit, push alle Veränderung zurück auf GitHub -->
-<!-- ## Übung 2 - Daten erkunden -->
-<!-- 1. Nutze die Funktion `names()` für jeden Dataframe um die Spaltennamen zu erkunden. Über welche Variablen können die Daten zusammengefügt werden? -->
-<!-- 2. Nutze die Funktion `nrow()` für jeden Dataframe um die Anzahl Reihen zu identifizieren. -->
-<!-- 3. Nutze andere Funktionen die dir bekannt sind um die drei Dataframes zu erkunden -->
-<!-- ```{r} -->
-<!-- ``` -->
-<!-- 4. Strick das Dokument und dann: git add, commit, push alle Veränderung zurück auf GitHub -->
-<!-- ## Übung 3 - Daten zusammenfügen -->
-<!-- 1. Nutze die drei Dataframes um verschiedene Kombinationen von joins auszuprobieren. Ich habe im Code-chunk bereits ein Beispiel vorbereitet. -->
-<!-- Als Erinnerung, die drei Funktionen, die du kennengelernt hast: -->
-<!-- - `left_join()` -->
-<!-- - `right_join()` -->
-<!-- - `full_join()` -->
-<!-- Schaut euch den Output in der Console jeweils genau an und überlegt welche joins (Zusammenfügungen) für welche Fragestellungen sinnvoll wären. -->
-<!-- ```{r} -->
-<!-- # Kombination 1 -->
-<!-- preise %>%  -->
-<!--   left_join(einkaeufe) -->
-<!-- # Kombination 2 -->
-<!-- # Schreibt hier eure Beispiele -->
-<!-- # Kombination 3 -->
-<!-- # etc.  -->
-<!-- ``` -->
-<!-- 2. Starte mit dem Objekt `einkauefe` und nutze die Funktion `left_join()` um dieses mit dem Objekt `preise` zusammenzufügen. Speicher das Ergebnis als ein neues Objekt in deiner Arbeitsumgebung (Environment) mit dem Namen `einkaeufe_preise`. -->
-<!-- ```{r} -->
-<!-- ``` -->
-<!-- 3. Strick das Dokument und dann: git add, commit, push alle Veränderung zurück auf GitHub -->
+<ol start="2" style="list-style-type: decimal">
+<li>Strick das Dokument und dann: git add, commit, push alle Veränderung zurück auf GitHub</li>
+</ol>
+</div>
+<div id="übung-2---daten-erkunden" class="section level2">
+<h2>Übung 2 - Daten erkunden</h2>
+<ol style="list-style-type: decimal">
+<li>Nutze die Funktion <code>names()</code> für jeden Dataframe um die Spaltennamen zu erkunden. Über welche Variablen können die Daten zusammengefügt werden?</li>
+<li>Nutze die Funktion <code>nrow()</code> für jeden Dataframe um die Anzahl Reihen zu identifizieren.</li>
+<li>Nutze andere Funktionen die dir bekannt sind um die drei Dataframes zu erkunden</li>
+</ol>
+<pre class="r"><code>names(einkaeufe)</code></pre>
+<pre><code>## [1] &quot;kunden_id&quot;    &quot;produkt_name&quot; &quot;einkauf&quot;      &quot;einheit&quot;</code></pre>
+<pre class="r"><code>names(kundenprofile)</code></pre>
+<pre><code>##  [1] &quot;kunden_id&quot;  &quot;email&quot;      &quot;phone&quot;      &quot;vorname&quot;    &quot;nachname&quot;  
+##  [6] &quot;wohnort&quot;    &quot;kanton&quot;     &quot;plz&quot;        &quot;geburtstag&quot; &quot;alter&quot;</code></pre>
+<pre class="r"><code>names(preise)</code></pre>
+<pre><code>## [1] &quot;produkt_name&quot; &quot;preis&quot;</code></pre>
+<pre class="r"><code>nrow(einkaeufe)</code></pre>
+<pre><code>## [1] 9</code></pre>
+<pre class="r"><code>nrow(kundenprofile)</code></pre>
+<pre><code>## [1] 5</code></pre>
+<pre class="r"><code>nrow(preise)</code></pre>
+<pre><code>## [1] 10</code></pre>
+<pre class="r"><code>glimpse(einkaeufe)</code></pre>
+<pre><code>## Rows: 9
+## Columns: 4
+## $ kunden_id    &lt;chr&gt; &quot;k1&quot;, &quot;k1&quot;, &quot;k1&quot;, &quot;k2&quot;, &quot;k2&quot;, &quot;k2&quot;, &quot;k2&quot;, &quot;k2&quot;, &quot;k2&quot;
+## $ produkt_name &lt;chr&gt; &quot;Chips&quot;, &quot;Milch&quot;, &quot;Avocado&quot;, &quot;Pfirsich&quot;, &quot;Birne&quot;, &quot;Apfel&quot;…
+## $ einkauf      &lt;dbl&gt; 2.0, 3.0, 1.0, 2.5, 0.5, 2.0, 1.5, 1.0, 4.0
+## $ einheit      &lt;chr&gt; &quot;anzahl&quot;, &quot;anzahl&quot;, &quot;anzahl&quot;, &quot;kg&quot;, &quot;kg&quot;, &quot;kg&quot;, &quot;kg&quot;, &quot;kg…</code></pre>
+<pre class="r"><code>glimpse(kundenprofile)</code></pre>
+<pre><code>## Rows: 5
+## Columns: 10
+## $ kunden_id  &lt;chr&gt; &quot;k1&quot;, &quot;k2&quot;, &quot;k3&quot;, &quot;k4&quot;, &quot;k5&quot;
+## $ email      &lt;chr&gt; &quot;fabienne.colin@example.com&quot;, &quot;carol.dufour@example.com&quot;, &quot;…
+## $ phone      &lt;chr&gt; &quot;079 379 62 05&quot;, &quot;076 430 16 51&quot;, &quot;078 965 74 56&quot;, &quot;077 730…
+## $ vorname    &lt;chr&gt; &quot;Fabienne&quot;, &quot;Carol&quot;, &quot;Silvia&quot;, &quot;Valérie&quot;, &quot;Roger&quot;
+## $ nachname   &lt;chr&gt; &quot;Colin&quot;, &quot;Dufour&quot;, &quot;Dumont&quot;, &quot;Renaud&quot;, &quot;Leclercq&quot;
+## $ wohnort    &lt;chr&gt; &quot;Les Enfers&quot;, &quot;Oberengstringen&quot;, &quot;Hasle (Lu)&quot;, &quot;Koblenz&quot;, &quot;…
+## $ kanton     &lt;chr&gt; &quot;Zug&quot;, &quot;Nidwalden&quot;, &quot;Bern&quot;, &quot;Uri&quot;, &quot;Fribourg&quot;
+## $ plz        &lt;dbl&gt; 3151, 3440, 8975, 7761, 7382
+## $ geburtstag &lt;date&gt; 1956-04-20, 1977-01-06, 1973-10-23, 1963-08-25, 1988-01-03
+## $ alter      &lt;dbl&gt; 65, 44, 48, 58, 33</code></pre>
+<pre class="r"><code>glimpse(preise)</code></pre>
+<pre><code>## Rows: 10
+## Columns: 2
+## $ produkt_name &lt;chr&gt; &quot;Toilettenpapier&quot;, &quot;Chips&quot;, &quot;Blaubeeren&quot;, &quot;Milch&quot;, &quot;Avoca…
+## $ preis        &lt;dbl&gt; 14.3, 3.8, 7.8, 2.2, 3.2, 1.9, 2.6, 4.1, 2.7, 6.5</code></pre>
+<ol start="4" style="list-style-type: decimal">
+<li>Strick das Dokument und dann: git add, commit, push alle Veränderung zurück auf GitHub</li>
+</ol>
+</div>
+<div id="übung-3---daten-zusammenfügen" class="section level2">
+<h2>Übung 3 - Daten zusammenfügen</h2>
+<ol style="list-style-type: decimal">
+<li>Nutze die drei Dataframes um verschiedene Kombinationen von joins auszuprobieren. Ich habe im Code-chunk bereits ein Beispiel vorbereitet.</li>
+</ol>
+<p>Als Erinnerung, die drei Funktionen, die du kennengelernt hast:</p>
+<ul>
+<li><code>left_join()</code></li>
+<li><code>right_join()</code></li>
+<li><code>full_join()</code></li>
+</ul>
+<p>Schaut euch den Output in der Console jeweils genau an und überlegt welche joins (Zusammenfügungen) für welche Fragestellungen sinnvoll wären.</p>
+<pre class="r"><code># Kombination 1
+
+preise %&gt;%
+  left_join(einkaeufe)</code></pre>
+<pre><code>## # A tibble: 12 x 5
+##    produkt_name    preis kunden_id einkauf einheit
+##    &lt;chr&gt;           &lt;dbl&gt; &lt;chr&gt;       &lt;dbl&gt; &lt;chr&gt;  
+##  1 Toilettenpapier  14.3 &lt;NA&gt;         NA   &lt;NA&gt;   
+##  2 Chips             3.8 k1            2   anzahl 
+##  3 Blaubeeren        7.8 &lt;NA&gt;         NA   &lt;NA&gt;   
+##  4 Milch             2.2 k1            3   anzahl 
+##  5 Milch             2.2 k2            4   anzahl 
+##  6 Avocado           3.2 k1            1   anzahl 
+##  7 Banane            1.9 &lt;NA&gt;         NA   &lt;NA&gt;   
+##  8 Birne             2.6 k2            0.5 kg     
+##  9 Apfel             4.1 k2            2   kg     
+## 10 Tomate            2.7 k2            1.5 kg     
+## 11 Pfirsich          6.5 k2            2.5 kg     
+## 12 Pfirsich          6.5 k2            1   kg</code></pre>
+<pre class="r"><code># Kombination 2
+kundenprofile %&gt;% 
+  right_join(einkaeufe)</code></pre>
+<pre><code>## # A tibble: 9 x 13
+##   kunden_id email   phone vorname nachname wohnort kanton   plz geburtstag alter
+##   &lt;chr&gt;     &lt;chr&gt;   &lt;chr&gt; &lt;chr&gt;   &lt;chr&gt;    &lt;chr&gt;   &lt;chr&gt;  &lt;dbl&gt; &lt;date&gt;     &lt;dbl&gt;
+## 1 k1        fabien… 079 … Fabien… Colin    Les En… Zug     3151 1956-04-20    65
+## 2 k1        fabien… 079 … Fabien… Colin    Les En… Zug     3151 1956-04-20    65
+## 3 k1        fabien… 079 … Fabien… Colin    Les En… Zug     3151 1956-04-20    65
+## 4 k2        carol.… 076 … Carol   Dufour   Oberen… Nidwa…  3440 1977-01-06    44
+## 5 k2        carol.… 076 … Carol   Dufour   Oberen… Nidwa…  3440 1977-01-06    44
+## 6 k2        carol.… 076 … Carol   Dufour   Oberen… Nidwa…  3440 1977-01-06    44
+## 7 k2        carol.… 076 … Carol   Dufour   Oberen… Nidwa…  3440 1977-01-06    44
+## 8 k2        carol.… 076 … Carol   Dufour   Oberen… Nidwa…  3440 1977-01-06    44
+## 9 k2        carol.… 076 … Carol   Dufour   Oberen… Nidwa…  3440 1977-01-06    44
+## # … with 3 more variables: produkt_name &lt;chr&gt;, einkauf &lt;dbl&gt;, einheit &lt;chr&gt;</code></pre>
+<pre class="r"><code># Schreibt hier eure Beispiele
+
+# Kombination 3
+preise %&gt;% 
+  left_join(einkaeufe) %&gt;% 
+  left_join(kundenprofile)</code></pre>
+<pre><code>## # A tibble: 12 x 14
+##    produkt_name  preis kunden_id einkauf einheit email    phone vorname nachname
+##    &lt;chr&gt;         &lt;dbl&gt; &lt;chr&gt;       &lt;dbl&gt; &lt;chr&gt;   &lt;chr&gt;    &lt;chr&gt; &lt;chr&gt;   &lt;chr&gt;   
+##  1 Toilettenpap…  14.3 &lt;NA&gt;         NA   &lt;NA&gt;    &lt;NA&gt;     &lt;NA&gt;  &lt;NA&gt;    &lt;NA&gt;    
+##  2 Chips           3.8 k1            2   anzahl  fabienn… 079 … Fabien… Colin   
+##  3 Blaubeeren      7.8 &lt;NA&gt;         NA   &lt;NA&gt;    &lt;NA&gt;     &lt;NA&gt;  &lt;NA&gt;    &lt;NA&gt;    
+##  4 Milch           2.2 k1            3   anzahl  fabienn… 079 … Fabien… Colin   
+##  5 Milch           2.2 k2            4   anzahl  carol.d… 076 … Carol   Dufour  
+##  6 Avocado         3.2 k1            1   anzahl  fabienn… 079 … Fabien… Colin   
+##  7 Banane          1.9 &lt;NA&gt;         NA   &lt;NA&gt;    &lt;NA&gt;     &lt;NA&gt;  &lt;NA&gt;    &lt;NA&gt;    
+##  8 Birne           2.6 k2            0.5 kg      carol.d… 076 … Carol   Dufour  
+##  9 Apfel           4.1 k2            2   kg      carol.d… 076 … Carol   Dufour  
+## 10 Tomate          2.7 k2            1.5 kg      carol.d… 076 … Carol   Dufour  
+## 11 Pfirsich        6.5 k2            2.5 kg      carol.d… 076 … Carol   Dufour  
+## 12 Pfirsich        6.5 k2            1   kg      carol.d… 076 … Carol   Dufour  
+## # … with 5 more variables: wohnort &lt;chr&gt;, kanton &lt;chr&gt;, plz &lt;dbl&gt;,
+## #   geburtstag &lt;date&gt;, alter &lt;dbl&gt;</code></pre>
+<pre class="r"><code># Kombination 4
+kundenprofile %&gt;% 
+  full_join(einkaeufe)</code></pre>
+<pre><code>## # A tibble: 12 x 13
+##    kunden_id email  phone vorname nachname wohnort kanton   plz geburtstag alter
+##    &lt;chr&gt;     &lt;chr&gt;  &lt;chr&gt; &lt;chr&gt;   &lt;chr&gt;    &lt;chr&gt;   &lt;chr&gt;  &lt;dbl&gt; &lt;date&gt;     &lt;dbl&gt;
+##  1 k1        fabie… 079 … Fabien… Colin    Les En… Zug     3151 1956-04-20    65
+##  2 k1        fabie… 079 … Fabien… Colin    Les En… Zug     3151 1956-04-20    65
+##  3 k1        fabie… 079 … Fabien… Colin    Les En… Zug     3151 1956-04-20    65
+##  4 k2        carol… 076 … Carol   Dufour   Oberen… Nidwa…  3440 1977-01-06    44
+##  5 k2        carol… 076 … Carol   Dufour   Oberen… Nidwa…  3440 1977-01-06    44
+##  6 k2        carol… 076 … Carol   Dufour   Oberen… Nidwa…  3440 1977-01-06    44
+##  7 k2        carol… 076 … Carol   Dufour   Oberen… Nidwa…  3440 1977-01-06    44
+##  8 k2        carol… 076 … Carol   Dufour   Oberen… Nidwa…  3440 1977-01-06    44
+##  9 k2        carol… 076 … Carol   Dufour   Oberen… Nidwa…  3440 1977-01-06    44
+## 10 k3        silvi… 078 … Silvia  Dumont   Hasle … Bern    8975 1973-10-23    48
+## 11 k4        valer… 077 … Valérie Renaud   Koblenz Uri     7761 1963-08-25    58
+## 12 k5        roger… 076 … Roger   Leclercq Wilchi… Fribo…  7382 1988-01-03    33
+## # … with 3 more variables: produkt_name &lt;chr&gt;, einkauf &lt;dbl&gt;, einheit &lt;chr&gt;</code></pre>
+<ol start="2" style="list-style-type: decimal">
+<li>Starte mit dem Objekt <code>einkauefe</code> und nutze die Funktion <code>left_join()</code> um dieses mit dem Objekt <code>preise</code> zusammenzufügen. Speicher das Ergebnis als ein neues Objekt in deiner Arbeitsumgebung (Environment) mit dem Namen <code>einkaeufe_preise</code>.</li>
+</ol>
+<pre class="r"><code>einkaeufe_preise &lt;- einkaeufe %&gt;% 
+  left_join(preise)</code></pre>
+<ol start="3" style="list-style-type: decimal">
+<li>Strick das Dokument und dann: git add, commit, push alle Veränderung zurück auf GitHub</li>
+</ol>
 <!-- ## Übung 4 - Neue Variable erstellen -->
 <!-- 1. Starte mit dem Objekt `einkauefe_preise` und nutze die Funktion `mutate()` um eine neue Variable mit dem Namen 'kosten' zu erstellen. Das Variable soll eine Multiplikation der Spalte 'einkauf' mit der Spalte 'preis' beinhalten. Speicher das Ergebnis als ein neues Objekt in deiner Arbeitsumgebung (Environment) mit dem Namen `einkaeufe_kosten`. -->
 <!-- ```{r} -->
@@ -315,36 +437,36 @@ kundenprofile &lt;- read_csv(file = &quot;/cloud/project/data/supermarkt/kundenp
 <!-- 1. Starte mit dem Objekt `einkaeufe_kosten` und gruppiere die Daten nach 'kunden_id'. Berechne dann die Summe aus den Kosten um den geschuldeten Betrag der Kund_innen zu berechnen. Speicher das Ergebnis in deiner Arbeitsumgebung mit dem Namen `einkaeufe_kosten_sum`. Ich habe Code mit Lücken für dich vorbereitet. -->
 <!-- 2. Setze die Code-chunk Option von 'eval=FALSE' auf 'eval=TRUE' um den Code beim nächsten Stricken mit auszuführen. -->
 <!-- ```{r, eval=FALSE} -->
-<!-- einkaeufe_kosten_sum <- einkaeufe_kosten %>%  -->
-<!--   group_by(___) %>%  -->
+<!-- einkaeufe_kosten_sum <- einkaeufe_kosten %>% -->
+<!--   group_by(___) %>% -->
 <!--   ___( -->
 <!--     summe = ___ -->
 <!--   ) -->
 <!-- ``` -->
 <!-- 2. Starte mit dem Objekt `einkaeufe_kosten_sum` und nutze die Funktion `left_join()` um dieses mit dem Objekt `kundenprofile` zusammenzufügen. Selektiere dann nur die Spalten 'vorname', 'nachname', 'summe' und 'email'. Speicher das Ergebnis als ein neues Objekt in deiner Arbeitsumgebung (Environment) mit dem Namen `kunden_tab`. -->
 <!-- ```{r} -->
-<!-- kunden_tab <- einkaeufe_kosten_sum %>%  -->
-<!--   left_join(kundenprofile) %>%  -->
+<!-- kunden_tab <- einkaeufe_kosten_sum %>% -->
+<!--   left_join(kundenprofile) %>% -->
 <!--   select(ends_with("name"), summe, email) -->
 <!-- ``` -->
 <!-- 3. Strick das Dokument und dann: git add, commit, push alle Veränderung zurück auf GitHub -->
 <!-- ## Übung 6 - Daten als Tabelle darstellen (Bonus) -->
-<!-- 1. Nutze das Objekt `kunden_tab` und den Pipe-Operator um eine Code-Sequenz zu schreiben welche das Objekt `kunden_tab` mit der Funktion `gt()` verbindet.  -->
+<!-- 1. Nutze das Objekt `kunden_tab` und den Pipe-Operator um eine Code-Sequenz zu schreiben welche das Objekt `kunden_tab` mit der Funktion `gt()` verbindet. -->
 <!-- ```{r} -->
-<!-- kunden_tab %>%  -->
+<!-- kunden_tab %>% -->
 <!--   gt() -->
 <!-- ``` -->
 <!-- 2. Nutze das Objekt `kunden_tab` und den Pipe-Operator um eine Code-Sequenz zu schreiben welche das Objekt `kunden_tab` mit der Funktion `datatable()` verbindet. -->
 <!-- ```{r} -->
-<!-- kunden_tab %>%  -->
+<!-- kunden_tab %>% -->
 <!--   datatable() -->
 <!-- ``` -->
 <!-- 3. Nutze das Objekt `kunden_tab` und den Pipe-Operator um eine Code-Sequenz zu schreiben welche das Objekt `kunden_tab` mit der Funktion `kable()` verbindet. -->
 <!-- ```{r} -->
-<!-- kunden_tab %>%  -->
+<!-- kunden_tab %>% -->
 <!--   kable() -->
 <!-- ``` -->
-<!-- 4. Strick das Dokument und schau dir die drei Tabellen in der resulitierenden HTML Datei an.  -->
+<!-- 4. Strick das Dokument und schau dir die drei Tabellen in der resulitierenden HTML Datei an. -->
 <!-- 5. Git add, commit, push alle Veränderung zurück auf GitHub -->
 </div>
 </div>
