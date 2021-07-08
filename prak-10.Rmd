@@ -72,43 +72,52 @@ glimpse(preise)
 
 4. Strick das Dokument und dann: git add, commit, push alle Veränderung zurück auf GitHub
 
-<!-- ## Übung 3 - Daten zusammenfügen -->
+## Übung 3 - Daten zusammenfügen
 
-<!-- 1. Nutze die drei Dataframes um verschiedene Kombinationen von joins auszuprobieren. Ich habe im Code-chunk bereits ein Beispiel vorbereitet. -->
+1. Nutze die drei Dataframes um verschiedene Kombinationen von joins auszuprobieren. Ich habe im Code-chunk bereits ein Beispiel vorbereitet.
 
-<!-- Als Erinnerung, die drei Funktionen, die du kennengelernt hast: -->
+Als Erinnerung, die drei Funktionen, die du kennengelernt hast:
 
-<!-- - `left_join()` -->
-<!-- - `right_join()` -->
-<!-- - `full_join()` -->
+- `left_join()`
+- `right_join()`
+- `full_join()`
 
-<!-- Schaut euch den Output in der Console jeweils genau an und überlegt welche joins (Zusammenfügungen) für welche Fragestellungen sinnvoll wären. -->
+Schaut euch den Output in der Console jeweils genau an und überlegt welche joins (Zusammenfügungen) für welche Fragestellungen sinnvoll wären.
 
-<!-- ```{r} -->
+```{r}
 
-<!-- # Kombination 1 -->
+# Kombination 1
 
-<!-- preise %>% -->
-<!--   left_join(einkaeufe) -->
+preise %>%
+  left_join(einkaeufe)
 
-<!-- # Kombination 2 -->
+# Kombination 2
+kundenprofile %>% 
+  right_join(einkaeufe)
 
-<!-- # Schreibt hier eure Beispiele -->
+# Schreibt hier eure Beispiele
 
-<!-- # Kombination 3 -->
+# Kombination 3
+preise %>% 
+  left_join(einkaeufe) %>% 
+  left_join(kundenprofile)
 
-<!-- # etc. -->
+# Kombination 4
+kundenprofile %>% 
+  full_join(einkaeufe)
 
-<!-- ``` -->
-
-<!-- 2. Starte mit dem Objekt `einkauefe` und nutze die Funktion `left_join()` um dieses mit dem Objekt `preise` zusammenzufügen. Speicher das Ergebnis als ein neues Objekt in deiner Arbeitsumgebung (Environment) mit dem Namen `einkaeufe_preise`. -->
-
-<!-- ```{r} -->
+```
 
 
-<!-- ``` -->
+2. Starte mit dem Objekt `einkauefe` und nutze die Funktion `left_join()` um dieses mit dem Objekt `preise` zusammenzufügen. Speicher das Ergebnis als ein neues Objekt in deiner Arbeitsumgebung (Environment) mit dem Namen `einkaeufe_preise`.
 
-<!-- 3. Strick das Dokument und dann: git add, commit, push alle Veränderung zurück auf GitHub -->
+```{r}
+einkaeufe_preise <- einkaeufe %>% 
+  left_join(preise)
+
+```
+
+3. Strick das Dokument und dann: git add, commit, push alle Veränderung zurück auf GitHub
 
 <!-- ## Übung 4 - Neue Variable erstellen -->
 
