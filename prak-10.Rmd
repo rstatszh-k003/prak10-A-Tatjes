@@ -119,29 +119,29 @@ einkaeufe_preise <- einkaeufe %>%
 
 3. Strick das Dokument und dann: git add, commit, push alle Veränderung zurück auf GitHub
 
-<!-- ## Übung 4 - Neue Variable erstellen -->
+## Übung 4 - Neue Variable erstellen
 
-<!-- 1. Starte mit dem Objekt `einkauefe_preise` und nutze die Funktion `mutate()` um eine neue Variable mit dem Namen 'kosten' zu erstellen. Das Variable soll eine Multiplikation der Spalte 'einkauf' mit der Spalte 'preis' beinhalten. Speicher das Ergebnis als ein neues Objekt in deiner Arbeitsumgebung (Environment) mit dem Namen `einkaeufe_kosten`. -->
+1. Starte mit dem Objekt `einkauefe_preise` und nutze die Funktion `mutate()` um eine neue Variable mit dem Namen 'kosten' zu erstellen. Das Variable soll eine Multiplikation der Spalte 'einkauf' mit der Spalte 'preis' beinhalten. Speicher das Ergebnis als ein neues Objekt in deiner Arbeitsumgebung (Environment) mit dem Namen `einkaeufe_kosten`.
 
-<!-- ```{r} -->
+```{r}
+einkaeufe_kosten <- einkaeufe_preise %>% 
+  mutate(kosten = einkauf * preis)
+```
 
+## Übung 5 - Daten zusammenfassen (Bonus)
 
-<!-- ``` -->
+1. Starte mit dem Objekt `einkaeufe_kosten` und gruppiere die Daten nach 'kunden_id'. Berechne dann die Summe aus den Kosten um den geschuldeten Betrag der Kund_innen zu berechnen. Speicher das Ergebnis in deiner Arbeitsumgebung mit dem Namen `einkaeufe_kosten_sum`. Ich habe Code mit Lücken für dich vorbereitet.
+2. Setze die Code-chunk Option von 'eval=FALSE' auf 'eval=TRUE' um den Code beim nächsten Stricken mit auszuführen.
 
-<!-- ## Übung 5 - Daten zusammenfassen (Bonus) -->
+```{r, eval=TRUE}
 
-<!-- 1. Starte mit dem Objekt `einkaeufe_kosten` und gruppiere die Daten nach 'kunden_id'. Berechne dann die Summe aus den Kosten um den geschuldeten Betrag der Kund_innen zu berechnen. Speicher das Ergebnis in deiner Arbeitsumgebung mit dem Namen `einkaeufe_kosten_sum`. Ich habe Code mit Lücken für dich vorbereitet. -->
-<!-- 2. Setze die Code-chunk Option von 'eval=FALSE' auf 'eval=TRUE' um den Code beim nächsten Stricken mit auszuführen. -->
+einkaeufe_kosten_sum <- einkaeufe_kosten %>%
+  group_by(kunden_id) %>%
+  summarise(
+    summe = sum(kosten)
+  )
 
-<!-- ```{r, eval=FALSE} -->
-
-<!-- einkaeufe_kosten_sum <- einkaeufe_kosten %>% -->
-<!--   group_by(___) %>% -->
-<!--   ___( -->
-<!--     summe = ___ -->
-<!--   ) -->
-
-<!-- ``` -->
+```
 
 <!-- 2. Starte mit dem Objekt `einkaeufe_kosten_sum` und nutze die Funktion `left_join()` um dieses mit dem Objekt `kundenprofile` zusammenzufügen. Selektiere dann nur die Spalten 'vorname', 'nachname', 'summe' und 'email'. Speicher das Ergebnis als ein neues Objekt in deiner Arbeitsumgebung (Environment) mit dem Namen `kunden_tab`. -->
 
