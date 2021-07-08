@@ -48,20 +48,29 @@ preise <- read_csv(file = "/cloud/project/data/supermarkt/preise.csv")
 kundenprofile <- read_csv(file = "/cloud/project/data/supermarkt/kundenprofile.csv")
 ```
 
-<!-- 2. Strick das Dokument und dann: git add, commit, push alle Veränderung zurück auf GitHub -->
+2. Strick das Dokument und dann: git add, commit, push alle Veränderung zurück auf GitHub
 
-<!-- ## Übung 2 - Daten erkunden -->
+## Übung 2 - Daten erkunden
 
-<!-- 1. Nutze die Funktion `names()` für jeden Dataframe um die Spaltennamen zu erkunden. Über welche Variablen können die Daten zusammengefügt werden? -->
-<!-- 2. Nutze die Funktion `nrow()` für jeden Dataframe um die Anzahl Reihen zu identifizieren. -->
-<!-- 3. Nutze andere Funktionen die dir bekannt sind um die drei Dataframes zu erkunden -->
+1. Nutze die Funktion `names()` für jeden Dataframe um die Spaltennamen zu erkunden. Über welche Variablen können die Daten zusammengefügt werden?
+2. Nutze die Funktion `nrow()` für jeden Dataframe um die Anzahl Reihen zu identifizieren.
+3. Nutze andere Funktionen die dir bekannt sind um die drei Dataframes zu erkunden
 
-<!-- ```{r} -->
+```{r}
+names(einkaeufe)
+names(kundenprofile)
+names(preise)
 
+nrow(einkaeufe)
+nrow(kundenprofile)
+nrow(preise)
 
-<!-- ``` -->
+glimpse(einkaeufe)
+glimpse(kundenprofile)
+glimpse(preise)
+```
 
-<!-- 4. Strick das Dokument und dann: git add, commit, push alle Veränderung zurück auf GitHub -->
+4. Strick das Dokument und dann: git add, commit, push alle Veränderung zurück auf GitHub
 
 <!-- ## Übung 3 - Daten zusammenfügen -->
 
@@ -79,7 +88,7 @@ kundenprofile <- read_csv(file = "/cloud/project/data/supermarkt/kundenprofile.c
 
 <!-- # Kombination 1 -->
 
-<!-- preise %>%  -->
+<!-- preise %>% -->
 <!--   left_join(einkaeufe) -->
 
 <!-- # Kombination 2 -->
@@ -88,7 +97,7 @@ kundenprofile <- read_csv(file = "/cloud/project/data/supermarkt/kundenprofile.c
 
 <!-- # Kombination 3 -->
 
-<!-- # etc.  -->
+<!-- # etc. -->
 
 <!-- ``` -->
 
@@ -117,8 +126,8 @@ kundenprofile <- read_csv(file = "/cloud/project/data/supermarkt/kundenprofile.c
 
 <!-- ```{r, eval=FALSE} -->
 
-<!-- einkaeufe_kosten_sum <- einkaeufe_kosten %>%  -->
-<!--   group_by(___) %>%  -->
+<!-- einkaeufe_kosten_sum <- einkaeufe_kosten %>% -->
+<!--   group_by(___) %>% -->
 <!--   ___( -->
 <!--     summe = ___ -->
 <!--   ) -->
@@ -129,8 +138,8 @@ kundenprofile <- read_csv(file = "/cloud/project/data/supermarkt/kundenprofile.c
 
 <!-- ```{r} -->
 
-<!-- kunden_tab <- einkaeufe_kosten_sum %>%  -->
-<!--   left_join(kundenprofile) %>%  -->
+<!-- kunden_tab <- einkaeufe_kosten_sum %>% -->
+<!--   left_join(kundenprofile) %>% -->
 <!--   select(ends_with("name"), summe, email) -->
 
 <!-- ``` -->
@@ -139,27 +148,27 @@ kundenprofile <- read_csv(file = "/cloud/project/data/supermarkt/kundenprofile.c
 
 <!-- ## Übung 6 - Daten als Tabelle darstellen (Bonus) -->
 
-<!-- 1. Nutze das Objekt `kunden_tab` und den Pipe-Operator um eine Code-Sequenz zu schreiben welche das Objekt `kunden_tab` mit der Funktion `gt()` verbindet.  -->
+<!-- 1. Nutze das Objekt `kunden_tab` und den Pipe-Operator um eine Code-Sequenz zu schreiben welche das Objekt `kunden_tab` mit der Funktion `gt()` verbindet. -->
 
 <!-- ```{r} -->
-<!-- kunden_tab %>%  -->
+<!-- kunden_tab %>% -->
 <!--   gt() -->
 <!-- ``` -->
 
 <!-- 2. Nutze das Objekt `kunden_tab` und den Pipe-Operator um eine Code-Sequenz zu schreiben welche das Objekt `kunden_tab` mit der Funktion `datatable()` verbindet. -->
 
 <!-- ```{r} -->
-<!-- kunden_tab %>%  -->
+<!-- kunden_tab %>% -->
 <!--   datatable() -->
 <!-- ``` -->
 
 <!-- 3. Nutze das Objekt `kunden_tab` und den Pipe-Operator um eine Code-Sequenz zu schreiben welche das Objekt `kunden_tab` mit der Funktion `kable()` verbindet. -->
 
 <!-- ```{r} -->
-<!-- kunden_tab %>%  -->
+<!-- kunden_tab %>% -->
 <!--   kable() -->
 <!-- ``` -->
 
-<!-- 4. Strick das Dokument und schau dir die drei Tabellen in der resulitierenden HTML Datei an.  -->
+<!-- 4. Strick das Dokument und schau dir die drei Tabellen in der resulitierenden HTML Datei an. -->
 
 <!-- 5. Git add, commit, push alle Veränderung zurück auf GitHub -->
