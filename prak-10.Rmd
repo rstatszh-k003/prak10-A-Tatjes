@@ -142,6 +142,7 @@ einkaeufe_kosten_sum <- einkaeufe_kosten %>%
   )
 
 ```
+# Text markieren und auskommentieren mit Ctrl + Shift + C
 
 <!-- 2. Starte mit dem Objekt `einkaeufe_kosten_sum` und nutze die Funktion `left_join()` um dieses mit dem Objekt `kundenprofile` zusammenzufügen. Selektiere dann nur die Spalten 'vorname', 'nachname', 'summe' und 'email'. Speicher das Ergebnis als ein neues Objekt in deiner Arbeitsumgebung (Environment) mit dem Namen `kunden_tab`. -->
 
